@@ -1,0 +1,13 @@
+
+1) Design Database
+1) Create HOME static HTML Page
+1) Create BOOK DETAILS static HTML Page
+2) Write SQL queries
+2) Implement Database Instance in Server
+2) Render HOME static HTML Page from PHP Engine
+2) Render BOOK DETAILS static HTML Page from PHP Engine
+2) Render CONTACT INFO static HTML Page from PHP Engine
+3) Create CONTACT SEARCH static HTML Page (form)
+3) Integrate PHP CONTACT SEARCH form handling with Database
+3) Create BOOK SEARCH static HTML Page (form)
+3) Integrate PHP BOOK SEARCH form handling with Database
