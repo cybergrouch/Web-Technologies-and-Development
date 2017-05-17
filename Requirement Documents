@@ -37,9 +37,39 @@
 3) Integrate PHP BOOK SEARCH form handling with Database
 
 
-*** Design requirements for the website include: 
+* Design requirements for the website include: 
 
 1. Clear and consistent design including intuitive navigation. 
 2. Valid HTML5 code. 
 3. Concise and relevant HTML comments throughout the HTML code. 
 4. References should be included as HTML comments.
+
+** JavaScript and jQuery 
+
+Appropriate form validation should be implemented when the contact form is submitted. JavaScript and/or jQuery may be used.  
+The form validation must include the following checks: 
+  Name field of the user should not be empty 
+  Email field of the user must not be empty 
+  Comments field should not be empty  
+  
+If the validation fails:  
+  The form should not be submitted; 
+  An error needs to be generated using JavaScript and/or jQuery 
+  An appropriate error message should appear on the webpage (it should not be a pop-up message)
+  
+*** PHP and Database 
+
+PHP and database are required to implement the functionality below. 
+
+i. Search form: The search form in assignment 1 should be made functional. 
+    Users should be able to search for books based on a selection criterion. 
+    The form should interact with the database and retrieve details of books which meet the search criterion.  
+    
+ii. Contact form: the contact form in assignment 1 should be made functional. 
+    When a contact form is submitted, the form data should be stored in the database, in an appropriate database table. 
+    
+iii. Create a webpage which allows the user to:  
+    View All Books display all fields of each book stored in the database 
+    View All Comments display all data collected from the contact form  
+
+
