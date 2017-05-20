@@ -1,0 +1,3 @@
+DROP DATABASE IF EXISTS `BookCatalogDB`;
+
+DROP USER IF EXISTS `BookCatalogAdmin`;

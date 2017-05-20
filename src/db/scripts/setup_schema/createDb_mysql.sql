@@ -1,13 +1,22 @@
-CREATE TABLE `LatestNews` (
-	`id` INT NOT NULL,
-	`showStartDate` DATETIME NOT NULL,
-	`showEndDate` DATETIME NOT NULL,
+CREATE SCHEMA IF NOT EXISTS `BookCatalogDB`;
+
+USE `BookCatalogDB`;
+
+CREATE TABLE IF NOT EXISTS `News` (
+    `id` INT NOT NULL AUTO_INCREMENT,
+    PRIMARY KEY (`id`)
+);
+
+CREATE TABLE IF NOT EXISTS `LatestNews` (
+	`id` INT NOT NULL AUTO_INCREMENT,
+	`startDate` DATETIME NOT NULL,
+	`endDate` DATETIME NOT NULL,
 	`newsItemId` INT NOT NULL,
 	PRIMARY KEY (`id`)
 );
 
-CREATE TABLE `NewsItems` (
-	`id` INT NOT NULL,
+CREATE TABLE IF NOT EXISTS `NewsItems` (
+	`id` INT NOT NULL AUTO_INCREMENT,
 	`title` VARCHAR(40) NOT NULL,
 	`content` TEXT NOT NULL,
 	`postDate` DATETIME NOT NULL,
@@ -16,8 +25,8 @@ CREATE TABLE `NewsItems` (
 	PRIMARY KEY (`id`)
 );
 
-CREATE TABLE `Books` (
-	`id` INT NOT NULL,
+CREATE TABLE IF NOT EXISTS `Books` (
+	`id` INT NOT NULL AUTO_INCREMENT,
 	`title` VARCHAR(255) NOT NULL,
 	`authorId` INT NOT NULL,
 	`publisherId` INT NOT NULL,
@@ -25,21 +34,21 @@ CREATE TABLE `Books` (
 	PRIMARY KEY (`id`)
 );
 
-CREATE TABLE `VerifiedPerson` (
-	`id` INT NOT NULL,
+CREATE TABLE IF NOT EXISTS `VerifiedPerson` (
+	`id` INT NOT NULL AUTO_INCREMENT,
 	`firstname` VARCHAR(255) NOT NULL,
 	`lastname` VARCHAR(255) NOT NULL,
 	PRIMARY KEY (`id`)
 );
 
-CREATE TABLE `Publishers` (
-	`id` INT NOT NULL,
+CREATE TABLE IF NOT EXISTS `Publishers` (
+	`id` INT NOT NULL AUTO_INCREMENT,
 	`name` VARCHAR(255) NOT NULL,
 	PRIMARY KEY (`id`)
 );
 
-CREATE TABLE `Queries` (
-	`id` INT NOT NULL,
+CREATE TABLE IF NOT EXISTS `Queries` (
+	`id` INT NOT NULL AUTO_INCREMENT,
 	`name` VARCHAR(255) NOT NULL,
 	`email` VARCHAR(255) NOT NULL,
 	`mobile` VARCHAR(255),
@@ -56,3 +65,8 @@ ALTER TABLE `NewsItems` ADD CONSTRAINT `NewsItems_fk0` FOREIGN KEY (`authorId`) 
 ALTER TABLE `Books` ADD CONSTRAINT `Books_fk0` FOREIGN KEY (`authorId`) REFERENCES `VerifiedPerson`(`id`);
 
 ALTER TABLE `Books` ADD CONSTRAINT `Books_fk1` FOREIGN KEY (`publisherId`) REFERENCES `Publishers`(`id`);
+
+CREATE USER IF NOT EXISTS 'BookCatalogAdmin'@'localhost' IDENTIFIED BY 'W3bT3@mD3v3l0p3r';
+
+GRANT ALL PRIVILEGES ON `BookCatalogDB` . * TO 'BookCatalogAdmin'@'localhost';
+
