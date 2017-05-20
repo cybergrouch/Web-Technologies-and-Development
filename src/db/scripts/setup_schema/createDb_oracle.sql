@@ -16,40 +16,41 @@ end;
 
 )
 /
-CREATE TABLE "NewsItems" (
+CREATE TABLE "NewsItem" (
 	"id" INT,
 	"title" VARCHAR2,
 	"content" TEXT,
 	"postDate" DATETIME,
 	"link" VARCHAR2,
 	"authorId" INT,
-	constraint NEWSITEMS_PK PRIMARY KEY ("id")
-CREATE sequence "NEWSITEMS_SEQ"
+	constraint NEWSITEM_PK PRIMARY KEY ("id")
+CREATE sequence "NEWSITEM_SEQ"
 /
-CREATE trigger "BI_NEWSITEMS"
-  before insert on "NEWSITEMS"
+CREATE trigger "BI_NEWSITEM"
+  before insert on "NEWSITEM"
   for each row
 begin
-  select "NEWSITEMS_SEQ".nextval into :NEW."id" from dual;
+  select "NEWSITEM_SEQ".nextval into :NEW."id" from dual;
 end;
 /
 
 )
 /
-CREATE TABLE "Books" (
+CREATE TABLE "Book" (
 	"id" INT,
 	"title" VARCHAR2,
 	"authorId" INT,
 	"publisherId" INT,
 	"yearPublished" INT,
-	constraint BOOKS_PK PRIMARY KEY ("id")
-CREATE sequence "BOOKS_SEQ"
+	"bookCoverImageUrl" VARCHAR2,
+	constraint BOOK_PK PRIMARY KEY ("id")
+CREATE sequence "BOOK_SEQ"
 /
-CREATE trigger "BI_BOOKS"
-  before insert on "BOOKS"
+CREATE trigger "BI_BOOK"
+  before insert on "BOOK"
   for each row
 begin
-  select "BOOKS_SEQ".nextval into :NEW."id" from dual;
+  select "BOOK_SEQ".nextval into :NEW."id" from dual;
 end;
 /
 
@@ -72,23 +73,23 @@ end;
 
 )
 /
-CREATE TABLE "Publishers" (
+CREATE TABLE "Publisher" (
 	"id" INT,
 	"name" VARCHAR2,
-	constraint PUBLISHERS_PK PRIMARY KEY ("id")
-CREATE sequence "PUBLISHERS_SEQ"
+	constraint PUBLISHER_PK PRIMARY KEY ("id")
+CREATE sequence "PUBLISHER_SEQ"
 /
-CREATE trigger "BI_PUBLISHERS"
-  before insert on "PUBLISHERS"
+CREATE trigger "BI_PUBLISHER"
+  before insert on "PUBLISHER"
   for each row
 begin
-  select "PUBLISHERS_SEQ".nextval into :NEW."id" from dual;
+  select "PUBLISHER_SEQ".nextval into :NEW."id" from dual;
 end;
 /
 
 )
 /
-CREATE TABLE "Queries" (
+CREATE TABLE "Query" (
 	"id" INT,
 	"name" VARCHAR2,
 	"email" VARCHAR2,
@@ -96,25 +97,50 @@ CREATE TABLE "Queries" (
 	"date" DATETIME,
 	"postalAddress" TEXT,
 	"message" TEXT,
-	constraint QUERIES_PK PRIMARY KEY ("id")
-CREATE sequence "QUERIES_SEQ"
+	constraint QUERY_PK PRIMARY KEY ("id")
+CREATE sequence "QUERY_SEQ"
 /
-CREATE trigger "BI_QUERIES"
-  before insert on "QUERIES"
+CREATE trigger "BI_QUERY"
+  before insert on "QUERY"
   for each row
 begin
-  select "QUERIES_SEQ".nextval into :NEW."id" from dual;
+  select "QUERY_SEQ".nextval into :NEW."id" from dual;
 end;
 /
 
 )
 /
-ALTER TABLE "LatestNews" ADD CONSTRAINT "LatestNews_fk0" FOREIGN KEY ("newsItemId") REFERENCES NewsItems("id");
+CREATE TABLE "BookType" (
+	"id" INT,
+	"name" VARCHAR2,
+	constraint BOOKTYPE_PK PRIMARY KEY ("id")
+CREATE sequence "BOOKTYPE_SEQ"
+/
+CREATE trigger "BI_BOOKTYPE"
+  before insert on "BOOKTYPE"
+  for each row
+begin
+  select "BOOKTYPE_SEQ".nextval into :NEW."id" from dual;
+end;
+/
 
-ALTER TABLE "NewsItems" ADD CONSTRAINT "NewsItems_fk0" FOREIGN KEY ("authorId") REFERENCES VerifiedPerson("id");
+)
+/
+CREATE TABLE "BookTypeMap" (
+	"bookTypeId" INT,
+	"bookId" INT
+)
+/
+ALTER TABLE "LatestNews" ADD CONSTRAINT "LatestNews_fk0" FOREIGN KEY ("newsItemId") REFERENCES NewsItem("id");
 
-ALTER TABLE "Books" ADD CONSTRAINT "Books_fk0" FOREIGN KEY ("authorId") REFERENCES VerifiedPerson("id");
-ALTER TABLE "Books" ADD CONSTRAINT "Books_fk1" FOREIGN KEY ("publisherId") REFERENCES Publishers("id");
+ALTER TABLE "NewsItem" ADD CONSTRAINT "NewsItem_fk0" FOREIGN KEY ("authorId") REFERENCES VerifiedPerson("id");
+
+ALTER TABLE "Book" ADD CONSTRAINT "Book_fk0" FOREIGN KEY ("authorId") REFERENCES VerifiedPerson("id");
+ALTER TABLE "Book" ADD CONSTRAINT "Book_fk1" FOREIGN KEY ("publisherId") REFERENCES Publisher("id");
 
 
 
+
+
+ALTER TABLE "BookTypeMap" ADD CONSTRAINT "BookTypeMap_fk0" FOREIGN KEY ("bookTypeId") REFERENCES BookType("id");
+ALTER TABLE "BookTypeMap" ADD CONSTRAINT "BookTypeMap_fk1" FOREIGN KEY ("bookId") REFERENCES Book("id");

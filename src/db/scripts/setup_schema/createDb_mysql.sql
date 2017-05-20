@@ -2,20 +2,15 @@ CREATE SCHEMA IF NOT EXISTS `BookCatalogDB`;
 
 USE `BookCatalogDB`;
 
-CREATE TABLE IF NOT EXISTS `News` (
-    `id` INT NOT NULL AUTO_INCREMENT,
-    PRIMARY KEY (`id`)
-);
-
-CREATE TABLE IF NOT EXISTS `LatestNews` (
+CREATE TABLE `LatestNews` (
 	`id` INT NOT NULL AUTO_INCREMENT,
-	`startDate` DATETIME NOT NULL,
-	`endDate` DATETIME NOT NULL,
+	`showStartDate` DATETIME NOT NULL,
+	`showEndDate` DATETIME NOT NULL,
 	`newsItemId` INT NOT NULL,
 	PRIMARY KEY (`id`)
 );
 
-CREATE TABLE IF NOT EXISTS `NewsItems` (
+CREATE TABLE `NewsItem` (
 	`id` INT NOT NULL AUTO_INCREMENT,
 	`title` VARCHAR(40) NOT NULL,
 	`content` TEXT NOT NULL,
@@ -25,29 +20,30 @@ CREATE TABLE IF NOT EXISTS `NewsItems` (
 	PRIMARY KEY (`id`)
 );
 
-CREATE TABLE IF NOT EXISTS `Books` (
+CREATE TABLE `Book` (
 	`id` INT NOT NULL AUTO_INCREMENT,
 	`title` VARCHAR(255) NOT NULL,
 	`authorId` INT NOT NULL,
 	`publisherId` INT NOT NULL,
 	`yearPublished` INT NOT NULL,
+	`bookCoverImageUrl` VARCHAR(255),
 	PRIMARY KEY (`id`)
 );
 
-CREATE TABLE IF NOT EXISTS `VerifiedPerson` (
+CREATE TABLE `VerifiedPerson` (
 	`id` INT NOT NULL AUTO_INCREMENT,
 	`firstname` VARCHAR(255) NOT NULL,
 	`lastname` VARCHAR(255) NOT NULL,
 	PRIMARY KEY (`id`)
 );
 
-CREATE TABLE IF NOT EXISTS `Publishers` (
+CREATE TABLE `Publisher` (
 	`id` INT NOT NULL AUTO_INCREMENT,
 	`name` VARCHAR(255) NOT NULL,
 	PRIMARY KEY (`id`)
 );
 
-CREATE TABLE IF NOT EXISTS `Queries` (
+CREATE TABLE `Query` (
 	`id` INT NOT NULL AUTO_INCREMENT,
 	`name` VARCHAR(255) NOT NULL,
 	`email` VARCHAR(255) NOT NULL,
@@ -58,13 +54,28 @@ CREATE TABLE IF NOT EXISTS `Queries` (
 	PRIMARY KEY (`id`)
 );
 
-ALTER TABLE `LatestNews` ADD CONSTRAINT `LatestNews_fk0` FOREIGN KEY (`newsItemId`) REFERENCES `NewsItems`(`id`);
+CREATE TABLE `BookType` (
+	`id` INT NOT NULL AUTO_INCREMENT,
+	`name` VARCHAR(255) NOT NULL,
+	PRIMARY KEY (`id`)
+);
 
-ALTER TABLE `NewsItems` ADD CONSTRAINT `NewsItems_fk0` FOREIGN KEY (`authorId`) REFERENCES `VerifiedPerson`(`id`);
+CREATE TABLE `BookTypeMap` (
+	`bookTypeId` INT NOT NULL,
+	`bookId` INT NOT NULL
+);
 
-ALTER TABLE `Books` ADD CONSTRAINT `Books_fk0` FOREIGN KEY (`authorId`) REFERENCES `VerifiedPerson`(`id`);
+ALTER TABLE `LatestNews` ADD CONSTRAINT `LatestNews_fk0` FOREIGN KEY (`newsItemId`) REFERENCES `NewsItem`(`id`);
 
-ALTER TABLE `Books` ADD CONSTRAINT `Books_fk1` FOREIGN KEY (`publisherId`) REFERENCES `Publishers`(`id`);
+ALTER TABLE `NewsItem` ADD CONSTRAINT `NewsItem_fk0` FOREIGN KEY (`authorId`) REFERENCES `VerifiedPerson`(`id`);
+
+ALTER TABLE `Book` ADD CONSTRAINT `Book_fk0` FOREIGN KEY (`authorId`) REFERENCES `VerifiedPerson`(`id`);
+
+ALTER TABLE `Book` ADD CONSTRAINT `Book_fk1` FOREIGN KEY (`publisherId`) REFERENCES `Publisher`(`id`);
+
+ALTER TABLE `BookTypeMap` ADD CONSTRAINT `BookTypeMap_fk0` FOREIGN KEY (`bookTypeId`) REFERENCES `BookType`(`id`);
+
+ALTER TABLE `BookTypeMap` ADD CONSTRAINT `BookTypeMap_fk1` FOREIGN KEY (`bookId`) REFERENCES `Book`(`id`);
 
 CREATE USER IF NOT EXISTS 'BookCatalogAdmin'@'localhost' IDENTIFIED BY 'W3bT3@mD3v3l0p3r';
 
