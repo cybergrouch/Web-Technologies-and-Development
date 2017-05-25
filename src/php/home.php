@@ -1,6 +1,6 @@
 <?php
-    require 'NewsItem.php';
-    require 'Event.php';
+require 'NewsItem.php';
+require 'Event.php';
 ?>
 
 <!DOCTYPE html>
@@ -11,7 +11,7 @@
 
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Online Book Catalogue | Home</title>
+    <title>Pages | Online Book Catalogue</title>
     <meta name="description" content="Online Book Catalogue |  Home">
 
     <link rel="apple-touch-icon" href="apple-touch-icon.png">
@@ -19,8 +19,12 @@
 
     <link href="css/bootstrap.css" rel="stylesheet" type="text/css">
 
+    <!-- Custom Fonts -->
     <link href="css/font-awesome.css" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
     <link href='https://fonts.googleapis.com/css?family=Kaushan+Script' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700' rel='stylesheet' type='text/css'>
 
 
     <link href="css/events.css" rel="stylesheet" type="text/css">
@@ -36,10 +40,11 @@
     <div class="container">
         <!-- Brand and toggle get grouped for better mobile display -->
         <div class="navbar-header page-scroll">
-            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+            <button type="button" class="navbar-toggle" data-toggle="collapse"
+                    data-target="#bs-example-navbar-collapse-1">
                 <span class="sr-only">Toggle navigation</span> Menu <i class="fa fa-bars"></i>
             </button>
-            <a class="navbar-brand page-scroll" href="#page-top">Pages | Online Book Catalogue</a>
+            <a class="navbar-brand page-scroll" href="#page-top">Pages</a>
         </div>
 
         <!-- Collect the nav links, forms, and other content for toggling -->
@@ -47,9 +52,6 @@
             <ul class="nav navbar-nav navbar-right">
                 <li class="hidden">
                     <a href="#page-top"></a>
-                </li>
-                <li>
-                    <a class="page-scroll" href="#">Home</a>
                 </li>
                 <li>
                     <a class="page-scroll" href="#news">News</a>
@@ -75,17 +77,17 @@
     <div class="container">
         <div class="intro-text">
             <div class="intro-lead-in">Welcome To <span id="brand">Pages</span>&nbsp;&nbsp;!!!</div>
-            <div class="intro-heading">It's Nice To Meet You</div>
+            <div class="intro-heading">The Online Book Club</div>
             <a href="#news" class="page-scroll btn btn-xl">See Latest News</a>
         </div>
     </div>
 </header>
 
 <section id="news">
-<div class="container container-news">
-    <div class="row"><h3>Latest News</h3></div>
+    <div class="container container-news">
+        <div class="row"><h3>Latest News</h3></div>
 
-    <?php
+        <?php
 
         $newsItems = array(
             new NewsItem(
@@ -115,80 +117,85 @@
         );
 
         $numberOfNewsItems = 4;
-    ?>
-
-    <div id="myCarousel" class="carousel slide" data-ride="carousel">
-
-        <!-- Wrapper for slides -->
-        <div class="carousel-inner">
-
-        <?php
-            for ($i = 0; $i < $numberOfNewsItems; $i++) {
-                $newsItem = $newsItems[$i];
-                $newsTitle = $newsItem->title;
-                $authorName = $newsItem->author;
-                $newsAbstract = $newsItem->text;
-                $newsImageLink = $newsItem->imageUrl;
-                $activeTag = ($i == 0) ? "active" : "";
         ?>
 
-            <div class="item <?php print($activeTag); ?>">
-                <img class="resize-image" src="<?php print($newsImageLink); ?>" alt="Nothing here">
+        <div id="myCarousel" class="carousel slide" data-ride="carousel">
 
-                <div class="carousel-caption">
-                    <div>
+            <!-- Wrapper for slides -->
+            <div class="carousel-inner">
+
+                <?php
+                for ($i = 0; $i < $numberOfNewsItems; $i++) {
+                    $newsItem = $newsItems[$i];
+                    $newsTitle = $newsItem->title;
+                    $authorName = $newsItem->author;
+                    $newsAbstract = $newsItem->text;
+                    $newsImageLink = $newsItem->imageUrl;
+                    $activeTag = ($i == 0) ? "active" : "";
+                    ?>
+
+                    <div class="item <?php print($activeTag); ?>">
+                        <img class="resize-image" src="<?php print($newsImageLink); ?>" alt="Nothing here">
+
+                        <div class="carousel-caption">
+                            <div>
                         <span class="h4">
                             <a href="#">
                                 <?php print($newsTitle); ?>
                             </a>
                         </span> -
-                        <span class="h5">
+                                <span class="h5">
                             <?php print($authorName); ?>
                         </span>
-                    </div>
-                    <p><?php print($newsAbstract); ?>&nbsp;<a class="label label-primary" href="#" target="_blank">Read more...</a></p>
-                </div>
-            </div><!-- End Item -->
+                            </div>
+                            <p><?php print($newsAbstract); ?>&nbsp;<a class="label label-primary" href="#"
+                                                                      target="_blank">Read more...</a></p>
+                        </div>
+                    </div><!-- End Item -->
 
-        <?php
-            }
-        ?>
+                    <?php
+                }
+                ?>
 
-        </div><!-- End Carousel Inner -->
+            </div><!-- End Carousel Inner -->
 
 
-        <ul class="list-group col-sm-4">
-            <?php
+            <ul class="list-group col-sm-4">
+                <?php
                 for ($i = 0; $i < $numberOfNewsItems; $i++) {
                     $newsItem = $newsItems[$i];
                     $newsTitle = $newsItem->title;
                     $authorName = $newsItem->author;
                     $activeTag = ($i == 0) ? "active" : "";
-            ?>
-            <li data-target="#myCarousel" data-slide-to="<?php print($i); ?>" class="list-group-item <?php print($activeTag); ?>"><div><span class="h4"><a href="#"><?php print($newsTitle); ?></a></span> - <span class="h5"><?php print($authorName); ?></span></div></li>
-            <?php
+                    ?>
+                    <li data-target="#myCarousel" data-slide-to="<?php print($i); ?>"
+                        class="list-group-item <?php print($activeTag); ?>">
+                        <div><span class="h4"><a href="#"><?php print($newsTitle); ?></a></span> - <span
+                                    class="h5"><?php print($authorName); ?></span></div>
+                    </li>
+                    <?php
                 }
-            ?>
-        </ul>
+                ?>
+            </ul>
 
-        <!-- Controls -->
-        <div class="carousel-controls">
-            <a class="left carousel-control" href="#myCarousel" data-slide="prev">
-                <span class="glyphicon glyphicon-chevron-left"></span>
-            </a>
-            <a class="right carousel-control" href="#myCarousel" data-slide="next">
-                <span class="glyphicon glyphicon-chevron-right"></span>
-            </a>
-        </div>
+            <!-- Controls -->
+            <div class="carousel-controls">
+                <a class="left carousel-control" href="#myCarousel" data-slide="prev">
+                    <span class="glyphicon glyphicon-chevron-left"></span>
+                </a>
+                <a class="right carousel-control" href="#myCarousel" data-slide="next">
+                    <span class="glyphicon glyphicon-chevron-right"></span>
+                </a>
+            </div>
 
-    </div><!-- End Carousel -->
-</div>
+        </div><!-- End Carousel -->
+    </div>
 </section>
 
 <section id="events">
-<div class="container container-events">
+    <div class="container container-events">
 
-    <?php
+        <?php
         $events = array(
             new Event(
                 "New Year's Day",
@@ -233,59 +240,61 @@
         );
 
         $numberOfEvents = 4;
-    ?>
+        ?>
 
-    <div class="row">
-        <h3>
-            Events
-        </h3>
-    </div>
-    <div class="row">
-        <div class="[ col-xs-12 col-sm-offset-2 col-sm-8 ]">
-            <ul class="event-list">
-                <?php
+        <div class="row">
+            <h3>
+                Events
+            </h3>
+        </div>
+        <div class="row">
+            <div class="[ col-xs-12 col-sm-offset-2 col-sm-8 ]">
+                <ul class="event-list">
+                    <?php
                     for ($i = 0; $i < $numberOfEvents; $i++) {
                         $event = $events[$i];
-                ?>
+                        ?>
 
-                <li>
-                    <time datetime="<?php print($event->dateTime); ?>">
-                        <span class="day"><?php print($event->day); ?></span>
-                        <span class="month"><?php print($event->month); ?></span>
-                        <span class="year"><?php print($event->year); ?></span>
-                        <span class="time"><?php print($event->time); ?></span>
-                    </time>
-                    <img alt="<?php print($event->name); ?>"
-                         src="<?php print($event->imageUrlLink); ?>"/>
-                    <div class="info">
-                        <h2 class="title"><?php print($event->name); ?></h2>
-                        <p class="desc"><?php print($event->description); ?></p>
-                    </div>
-                    <div class="social">
-                        <ul>
-                            <li class="facebook" style="width:33%;"><a href="#facebook"><span
-                                            class="fa fa-facebook"></span></a></li>
-                            <li class="twitter" style="width:34%;"><a href="#twitter"><span
-                                            class="fa fa-twitter"></span></a></li>
-                            <li class="google-plus" style="width:33%;"><a href="#google-plus"><span
-                                            class="fa fa-google-plus"></span></a></li>
-                        </ul>
-                    </div>
-                </li>
+                        <li>
+                            <time datetime="<?php print($event->dateTime); ?>">
+                                <span class="day"><?php print($event->day); ?></span>
+                                <span class="month"><?php print($event->month); ?></span>
+                                <span class="year"><?php print($event->year); ?></span>
+                                <span class="time"><?php print($event->time); ?></span>
+                            </time>
+                            <img alt="<?php print($event->name); ?>"
+                                 src="<?php print($event->imageUrlLink); ?>"/>
+                            <div class="info">
+                                <h2 class="title"><?php print($event->name); ?></h2>
+                                <p class="desc"><?php print($event->description); ?></p>
+                            </div>
+                            <div class="social">
+                                <ul>
+                                    <li class="facebook" style="width:33%;"><a href="#facebook"><span
+                                                    class="fa fa-facebook"></span></a></li>
+                                    <li class="twitter" style="width:34%;"><a href="#twitter"><span
+                                                    class="fa fa-twitter"></span></a></li>
+                                    <li class="google-plus" style="width:33%;"><a href="#google-plus"><span
+                                                    class="fa fa-google-plus"></span></a></li>
+                                </ul>
+                            </div>
+                        </li>
 
-                <?php
+                        <?php
                     }
-                ?>
-            </ul>
+                    ?>
+                </ul>
+            </div>
         </div>
     </div>
-</div>
 </section>
 
 
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
 <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.11.2.min.js"><\/script>')</script>
+
 <script src="js/vendor/bootstrap.min.js" type="text/javascript"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js" integrity="sha384-mE6eXfrb8jxl0rzJDBRanYqgBxtJ6Unn4/1F7q4xRRyIw7Vdg9jP4ycT7x1iVsgb" crossorigin="anonymous"></script>
 <script src="js/main.js" type="text/javascript"></script>
 
 <script src="js/newscarousel.js" type="text/javascript"></script>
