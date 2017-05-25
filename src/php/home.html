@@ -19,89 +19,105 @@
 <body>
 
 <div class="container container-news">
-    <div class="row"><h3>Latest News</h3></div>
-
-    <?php
-
-        $newsTitles = array(
-            "Lorem ipsum dolor sit amet consetetur sadipscing",
-            "Consetetur sadipscing elitr sed diam nonumy eirmod",
-            "Tempor invidunt ut labore et dolore",
-            "Magna aliquyam erat, sed diam voluptua",
-            "Sed diam voluptua",
-            "Elitr sed diam nonumy eirmod",
-        );
-
-        $authorNames = array(
-            "Antonio Pigafeta",
-            "Plato",
-            "Edmund Husserl",
-            "Hannah Arendt",
-            "Edith Stein",
-            "Therese De Liseux"
-        );
-
-        $newsAbstracts = array(
-            "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat",
-            "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat",
-            "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat",
-            "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat",
-            "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat",
-            "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat"
-        );
-
-        $numberOfNewsItems = 6;
-    ?>
+    <div class="row">
+        <h3>
+            Latest News
+        </h3>
+    </div>
 
     <div id="myCarousel" class="carousel slide" data-ride="carousel">
 
         <!-- Wrapper for slides -->
         <div class="carousel-inner">
 
-        <?php
-            for ($i = 0; $i < $numberOfNewsItems; $i++) {
-                $newsTitle = $newsTitles[$i];
-                $authorName = $authorNames[$i];
-                $activeTag = ($i == 0) ? "active" : "";
-                $newsAbstract = $newsAbstracts[$i];
-        ?>
-
-            <div class="item <?php print($activeTag); ?>">
+            <div class="item active">
                 <img src="http://placehold.it/760x400/cccccc/ffffff" alt="Nothing here">
                 <div class="carousel-caption">
-                    <div>
-                        <span class="h4">
-                            <a href="#">
-                                <?php print($newsTitle); ?>
-                            </a>
-                        </span> -
-                        <span class="h5">
-                            <?php print($authorName); ?>
-                        </span>
-                    </div>
-                    <p><?php print($newsAbstract); ?>&nbsp;<a class="label label-primary" href="#" target="_blank">Read more...</a></p>
+                    <div><span class="h4"><a href="#">Lorem ipsum dolor sit amet consetetur sadipscing</a></span> - <span class="h5">Antonio Pigafeta</span></div>
+                    <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt
+                        ut labore et dolore magna aliquyam erat, sed diam voluptua. Lorem ipsum dolor sit amet,
+                        consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna
+                        aliquyam erat. <a class="label label-primary" href="#" target="_blank">Read more...</a></p>
                 </div>
             </div><!-- End Item -->
 
-        <?php
-            }
-        ?>
+            <div class="item">
+                <img src="http://placehold.it/760x400/999999/cccccc" alt="Nothing here">
+                <div class="carousel-caption">
+                    <div><span class="h4"><a href="#">consetetur sadipscing elitr, sed diam nonumy eirmod</a></span> - <span class="h5">Plato</span></div>
+                    <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt
+                        ut labore et dolore magna aliquyam erat, sed diam voluptua. Lorem ipsum dolor sit amet,
+                        consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna
+                        aliquyam erat. <a class="label label-primary" href="#" target="_blank">Read more...</a></p>
+                </div>
+            </div><!-- End Item -->
+
+            <div class="item">
+                <img src="http://placehold.it/760x400/dddddd/333333" alt="Nothing here">
+                <div class="carousel-caption">
+                    <div><span class="h4"><a href="#">tempor invidunt ut labore et dolore</a></span> - <span class="h5">Edmund Husserl</span></div>
+                    <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt
+                        ut labore et dolore magna aliquyam erat, sed diam voluptua. Lorem ipsum dolor sit amet,
+                        consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna
+                        aliquyam erat. <a class="label label-primary" href="#" target="_blank">Read more...</a></p>
+                </div>
+            </div><!-- End Item -->
+
+            <div class="item">
+                <img src="http://placehold.it/760x400/999999/cccccc" alt="Nothing here">
+                <div class="carousel-caption">
+                    <div><span class="h4"><a href="#">magna aliquyam erat, sed diam voluptua</a></span> - <span class="h5">Hannah Arendt</span></div>
+                    <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt
+                        ut labore et dolore magna aliquyam erat, sed diam voluptua. Lorem ipsum dolor sit amet,
+                        consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna
+                        aliquyam erat. <a class="label label-primary" href="#" target="_blank">Read more...</a></p>
+                </div>
+            </div><!-- End Item -->
+
+            <div class="item">
+                <img src="http://placehold.it/760x400/dddddd/333333" alt="Nothing here">
+                <div class="carousel-caption">
+                    <div><span class="h4"><a href="#">tempor invidunt ut labore et dolore magna aliquyam erat</a></span> - <span class="h5">Edith Stein</span></div>
+                    <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt
+                        ut labore et dolore magna aliquyam erat, sed diam voluptua. Lorem ipsum dolor sit amet,
+                        consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna
+                        aliquyam erat. <a class="label label-primary" href="#" target="_blank">Read more...</a></p>
+                </div>
+            </div><!-- End Item -->
+
+            <div class="item">
+                <img src="http://placehold.it/760x400/dddddd/333333" alt="Nothing here">
+                <div class="carousel-caption">
+                    <div><span class="h4"><a href="#">ut labore et dolore magna aliquyam erat, sed diam voluptua</a></span> - <span class="h5">Therese De Lisieux</span></div>
+                    <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt
+                        ut labore et dolore magna aliquyam erat, sed diam voluptua. Lorem ipsum dolor sit amet,
+                        consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna
+                        aliquyam erat. <a class="label label-primary" href="#" target="_blank">Read more...</a></p>
+                </div>
+            </div><!-- End Item -->
+
+            <div class="item">
+                <img src="http://placehold.it/760x400/999999/cccccc" alt="Nothing here">
+                <div class="carousel-caption">
+                    <div><span class="h4"><a href="#">sed diam voluptua. Lorem ipsum dolor sit amet</a></span> - <span class="h5">Miguel Syjuco</span></div>
+                    <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt
+                        ut labore et dolore magna aliquyam erat, sed diam voluptua. Lorem ipsum dolor sit amet,
+                        consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna
+                        aliquyam erat. <a class="label label-primary" href="#" target="_blank">Read more...</a></p>
+                </div>
+            </div><!-- End Item -->
 
         </div><!-- End Carousel Inner -->
 
 
         <ul class="list-group col-sm-4">
-            <?php
-                for ($i = 0; $i < $numberOfNewsItems; $i++) {
-                    $newsTitle = $newsTitles[$i];
-                    $authorName = $authorNames[$i];
-                    $activeTag = ($i == 0) ? "active" : "";
-                    $newsAbstract = $newsAbstracts[$i];
-            ?>
-            <li data-target="#myCarousel" data-slide-to="<?php print($i); ?>" class="list-group-item <?php print($activeTag); ?>"><div><span class="h4"><a href="#"><?php print($newsTitle); ?></a></span> - <span class="h5"><?php print($authorName); ?></span></div></li>
-            <?php
-                }
-            ?>
+            <li data-target="#myCarousel" data-slide-to="0" class="list-group-item active"><div><span class="h4"><a href="#">Lorem ipsum dolor sit amet consetetur sadipscing</a></span> - <span class="h5">Antonio Pigafeta</span></div></li>
+            <li data-target="#myCarousel" data-slide-to="1" class="list-group-item"><div><span class="h4"><a href="#">consetetur sadipscing elitr, sed diam nonumy eirmod</a></span> - <span class="h5">Plato</span></div></li>
+            <li data-target="#myCarousel" data-slide-to="2" class="list-group-item"><div><span class="h4"><a href="#">tempor invidunt ut labore et dolore</a></span> - <span class="h5">Edmund Husserl</span></div></li>
+            <li data-target="#myCarousel" data-slide-to="3" class="list-group-item"><div><span class="h4"><a href="#">magna aliquyam erat, sed diam voluptua</a></span> - <span class="h5">Hannah Arendt</span></div></li>
+            <li data-target="#myCarousel" data-slide-to="4" class="list-group-item"><div><span class="h4"><a href="#">tempor invidunt ut labore et dolore magna aliquyam erat</a></span> - <span class="h5">Edith Stein</span></div></li>
+            <li data-target="#myCarousel" data-slide-to="5" class="list-group-item"><div><span class="h4"><a href="#">ut labore et dolore magna aliquyam erat, sed diam voluptua</a></span> - <span class="h5">Therese De Lisieux</span></div></li>
+            <li data-target="#myCarousel" data-slide-to="6" class="list-group-item"><div><span class="h4"><a href="#">sed diam voluptua. Lorem ipsum dolor sit amet</a></span> - <span class="h5">Miguel Syjuco</span></div></li>
         </ul>
 
         <!-- Controls -->
