@@ -17,3 +17,4 @@ $('#myCarousel').carousel({
     }
     clickEvent = false;
 });
+
