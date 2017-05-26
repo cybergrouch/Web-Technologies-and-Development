@@ -1,6 +1,64 @@
 /*#####################
 Additional Styles (required)
 #####################*/
+
+.bg-news {
+    background-color: #222222;
+    background-image: url('../img/news_bg.jpg');
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.bg-news .section-heading {
+    color: white;
+}
+.bg-news .form-group {
+    margin-bottom: 25px;
+}
+.bg-news .form-group input,
+.bg-news .form-group textarea {
+    padding: 20px;
+}
+.bg-news .form-group input.form-control {
+    height: auto;
+}
+.bg-news .form-group textarea.form-control {
+    height: 236px;
+}
+.bg-news .form-control:focus {
+    border-color: #fed136;
+    box-shadow: none;
+}
+.bg-news ::-webkit-input-placeholder {
+    font-family: "Montserrat", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    text-transform: uppercase;
+    font-weight: 700;
+    color: #eeeeee;
+}
+.bg-news :-moz-placeholder {
+    /* Firefox 18- */
+    font-family: "Montserrat", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    text-transform: uppercase;
+    font-weight: 700;
+    color: #eeeeee;
+}
+.bg-news ::-moz-placeholder {
+    /* Firefox 19+ */
+    font-family: "Montserrat", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    text-transform: uppercase;
+    font-weight: 700;
+    color: #eeeeee;
+}
+.bg-news :-ms-input-placeholder {
+    font-family: "Montserrat", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    text-transform: uppercase;
+    font-weight: 700;
+    color: #eeeeee;
+}
+.bg-news .text-danger {
+    color: #e74c3c;
+}
+
 #myCarousel .carousel-caption {
     left:0;
 	right:0;
@@ -31,7 +89,4 @@ Additional Styles (required)
 @media (max-width: 991px) { 
 	.carousel-caption p,
 	#myCarousel .list-group {display:none;} 
-}
-
-#myCarousel .resize-image {
 }

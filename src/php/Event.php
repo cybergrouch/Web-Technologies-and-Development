@@ -20,5 +20,9 @@ class Event
         $this->time = $time;
         $this->imageUrlLink = $imageUrlLink;
     }
+
+    public function dateOfEvent() {
+        return $this->day . " " . $this->month . " " . $this->year;
+    }
 }
 ?>

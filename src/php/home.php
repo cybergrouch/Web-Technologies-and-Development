@@ -26,8 +26,6 @@ require 'Event.php';
     <link href='https://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
     <link href='https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700' rel='stylesheet' type='text/css'>
 
-
-    <link href="css/events.css" rel="stylesheet" type="text/css">
     <link href="css/news.css" rel="stylesheet" type="text/css">
     <link href="css/agency.css" rel="stylesheet" type="text/css">
     <link href="css/pages_brand.css" rel="stylesheet" type="text/css">
@@ -54,16 +52,19 @@ require 'Event.php';
                     <a href="#page-top"></a>
                 </li>
                 <li>
-                    <a class="page-scroll" href="#news">News</a>
+                    <a class="page-scroll" href="#events">Events</a>
                 </li>
                 <li>
-                    <a class="page-scroll" href="#events">Events</a>
+                    <a class="page-scroll" href="#news">News</a>
                 </li>
                 <li>
                     <a class="page-scroll" href="books.html">Books</a>
                 </li>
                 <li>
-                    <a class="page-scroll" href="contactus.html">Contact Us</a>
+                    <a class="page-scroll" href="#team">Team</a>
+                </li>
+                <li>
+                    <a class="page-scroll" href="#contact">Contact Us</a>
                 </li>
             </ul>
         </div>
@@ -83,9 +84,111 @@ require 'Event.php';
     </div>
 </header>
 
-<section id="news">
-    <div class="container container-news">
-        <div class="row"><h3>Latest News</h3></div>
+<!-- Events Section -->
+<section id="events">
+
+    <?php
+    $events = array(
+        new Event(
+            "New Year's Day",
+            "Start of the new year 2017",
+            "2017-01-01",
+            "1",
+            "Jan",
+            "2017",
+            "ALL DAY",
+            "img/events/new_year_sydney.jpg"
+        ),
+        new Event(
+            "Australia Day",
+            "Australia National Day",
+            "2017-01-26",
+            "26",
+            "Jan",
+            "2017",
+            "ALL DAY",
+            "img/events/australia_day.jpg"
+        ),
+        new Event(
+            "ANZAC Day",
+            "A day remembering Australians and New Zealanders who served in all wars, conflicts, and peacekeeping operations.",
+            "2017-04-27",
+            "27",
+            "Apr",
+            "2017",
+            "ALL DAY",
+            "img/events/anzac_day_melbourne.jpg"
+        ),
+        new Event(
+            "Queen's Birthay",
+            "Official Birthday of Queen Elizabeth II",
+            "2017-06-12",
+            "12",
+            "Jun",
+            "2017",
+            "ALL DAY",
+            "img/events/queen_elizabeth.jpg"
+        ),
+    );
+
+    $numberOfEvents = 4;
+    ?>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 text-center">
+                <h2 class="section-heading">Events</h2>
+                <h3 class="section-subheading text-muted">Learn the upcoming events in the club.</h3>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-12">
+                <ul class="timeline">
+                    <?php
+                    foreach ($events as $i => $event) {
+                        ?>
+
+                        <li <?php if($i % 2 != 0) { print("class=\"timeline-inverted\""); } ?>>
+                            <div class="timeline-image">
+                                <img class="img-circle img-responsive" src="<?php print($event->imageUrlLink); ?>"
+                                     alt="">
+                            </div>
+                            <div class="timeline-panel">
+                                <div class="timeline-heading">
+                                    <h4><?php print($event->dateOfEvent()); ?></h4>
+                                    <h4 class="subheading"><?php print($event->name); ?></h4>
+                                </div>
+                                <div class="timeline-body">
+                                    <p class="text-muted"><?php print($event->description); ?></p>
+                                </div>
+                            </div>
+                        </li>
+
+                        <?php
+                    }
+                    ?>
+
+                    <li class="timeline-inverted">
+                        <div class="timeline-image">
+                            <h4>More
+                                <br>Events
+                                <br>Soon!</h4>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="news" class="bg-news">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 text-center">
+                <h2 class="section-heading">Latest News</h2>
+                <h3 class="section-subheading text-muted">The hottest news in book town.</h3>
+            </div>
+        </div>
 
         <?php
 
@@ -192,112 +295,148 @@ require 'Event.php';
     </div>
 </section>
 
-<section id="events">
-    <div class="container container-events">
-
-        <?php
-        $events = array(
-            new Event(
-                "New Year's Day",
-                "Start of the new year 2017",
-                "2017-01-01",
-                "1",
-                "Jan",
-                "2017",
-                "ALL DAY",
-                "https://c1.staticflickr.com/4/3089/3154293270_a79baeb09e_q.jpg"
-            ),
-            new Event(
-                "Australia Day",
-                "Australia National Day",
-                "2017-01-26",
-                "26",
-                "Jan",
-                "2017",
-                "ALL DAY",
-                "https://c1.staticflickr.com/4/3851/33523165935_a487e401c4_q.jpg"
-            ),
-            new Event(
-                "ANZAC Day",
-                "A day remembering Australians and New Zealanders who served in all wars, conflicts, and peacekeeping operations.",
-                "2017-04-27",
-                "27",
-                "Apr",
-                "2017",
-                "ALL DAY",
-                "https://c1.staticflickr.com/4/3609/3467065707_70fc427d77_q.jpg"
-            ),
-            new Event(
-                "Queen's Birthay",
-                "Official Birthday of Queen Elizabeth II",
-                "2017-06-12",
-                "12",
-                "Jun",
-                "2017",
-                "ALL DAY",
-                "https://c1.staticflickr.com/5/4101/4749808342_032d2862e0_q.jpg"
-            ),
-        );
-
-        $numberOfEvents = 4;
-        ?>
-
+<!-- Team Section -->
+<section id="team" class="bg-light-gray">
+    <div class="container">
         <div class="row">
-            <h3>
-                Events
-            </h3>
+            <div class="col-lg-12 text-center">
+                <h2 class="section-heading">Our Amazing Team</h2>
+                <h3 class="section-subheading text-muted">Lorem ipsum dolor sit amet consectetur.</h3>
+            </div>
         </div>
         <div class="row">
-            <div class="[ col-xs-12 col-sm-offset-2 col-sm-8 ]">
-                <ul class="event-list">
-                    <?php
-                    for ($i = 0; $i < $numberOfEvents; $i++) {
-                        $event = $events[$i];
-                        ?>
-
-                        <li>
-                            <time datetime="<?php print($event->dateTime); ?>">
-                                <span class="day"><?php print($event->day); ?></span>
-                                <span class="month"><?php print($event->month); ?></span>
-                                <span class="year"><?php print($event->year); ?></span>
-                                <span class="time"><?php print($event->time); ?></span>
-                            </time>
-                            <img alt="<?php print($event->name); ?>"
-                                 src="<?php print($event->imageUrlLink); ?>"/>
-                            <div class="info">
-                                <h2 class="title"><?php print($event->name); ?></h2>
-                                <p class="desc"><?php print($event->description); ?></p>
-                            </div>
-                            <div class="social">
-                                <ul>
-                                    <li class="facebook" style="width:33%;"><a href="#facebook"><span
-                                                    class="fa fa-facebook"></span></a></li>
-                                    <li class="twitter" style="width:34%;"><a href="#twitter"><span
-                                                    class="fa fa-twitter"></span></a></li>
-                                    <li class="google-plus" style="width:33%;"><a href="#google-plus"><span
-                                                    class="fa fa-google-plus"></span></a></li>
-                                </ul>
-                            </div>
+            <div class="col-sm-2"></div>
+            <div class="col-sm-4">
+                <div class="team-member">
+                    <img src="img/team/dominic.jpg" class="img-responsive img-circle" alt="">
+                    <h4>Dominic Estrada</h4>
+                    <p class="text-muted">Lead Database Engineer</p>
+                    <ul class="list-inline social-buttons">
+                        <li><a href="#"><i class="fa fa-twitter"></i></a>
                         </li>
-
-                        <?php
-                    }
-                    ?>
-                </ul>
+                        <li><a href="#"><i class="fa fa-facebook"></i></a>
+                        </li>
+                        <li><a href="#"><i class="fa fa-linkedin"></i></a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-sm-4">
+                <div class="team-member">
+                    <img src="img/team/remson.jpg" class="img-responsive img-circle" alt="">
+                    <h4>Remson Oras</h4>
+                    <p class="text-muted">Lead Full Stack Engineer</p>
+                    <ul class="list-inline social-buttons">
+                        <li><a href="#"><i class="fa fa-twitter"></i></a>
+                        </li>
+                        <li><a href="#"><i class="fa fa-facebook"></i></a>
+                        </li>
+                        <li><a href="#"><i class="fa fa-linkedin"></i></a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-sm-2"></div>
+        </div>
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 text-center">
+                <p class="large text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aut eaque, laboriosam veritatis, quos non quis ad perspiciatis, totam corporis ea, alias ut unde.</p>
             </div>
         </div>
     </div>
 </section>
 
+<!-- Contact Section -->
+<section id="contact">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 text-center">
+                <h2 class="section-heading">Contact Us</h2>
+                <h3 class="section-subheading text-muted">Lorem ipsum dolor sit amet consectetur.</h3>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-12">
+                <form name="sentMessage" id="contactForm" novalidate>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <input type="text" class="form-control" placeholder="Your Name *" id="name" required data-validation-required-message="Please enter your name.">
+                                <p class="help-block text-danger"></p>
+                            </div>
+                            <div class="form-group">
+                                <input type="email" class="form-control" placeholder="Your Email *" id="email" required data-validation-required-message="Please enter your email address.">
+                                <p class="help-block text-danger"></p>
+                            </div>
+                            <div class="form-group">
+                                <input type="tel" class="form-control" placeholder="Your Phone *" id="phone" required data-validation-required-message="Please enter your phone number.">
+                                <p class="help-block text-danger"></p>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <textarea class="form-control" placeholder="Your Message *" id="message" required data-validation-required-message="Please enter a message."></textarea>
+                                <p class="help-block text-danger"></p>
+                            </div>
+                        </div>
+                        <div class="clearfix"></div>
+                        <div class="col-lg-12 text-center">
+                            <div id="success"></div>
+                            <button type="submit" class="btn btn-xl">Send Message</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
 
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4">
+                <span class="copyright">Copyright &copy; <span id="brand">Pages</span>&nbsp;&nbsp;2017</span>
+            </div>
+            <div class="col-md-4">
+                <ul class="list-inline social-buttons">
+                    <li><a href="#"><i class="fa fa-twitter"></i></a>
+                    </li>
+                    <li><a href="#"><i class="fa fa-facebook"></i></a>
+                    </li>
+                    <li><a href="#"><i class="fa fa-linkedin"></i></a>
+                    </li>
+                </ul>
+            </div>
+            <div class="col-md-4">
+                <ul class="list-inline quicklinks">
+                    <li><a href="#">Privacy Policy</a>
+                    </li>
+                    <li><a href="#">Terms of Use</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- JQuery -->
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
 <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.11.2.min.js"><\/script>')</script>
 
+<!-- Bootstrap JavaScript -->
 <script src="js/vendor/bootstrap.min.js" type="text/javascript"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js" integrity="sha384-mE6eXfrb8jxl0rzJDBRanYqgBxtJ6Unn4/1F7q4xRRyIw7Vdg9jP4ycT7x1iVsgb" crossorigin="anonymous"></script>
-<script src="js/main.js" type="text/javascript"></script>
 
+<!-- JQuery Easing JavaScript Plugin -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js" integrity="sha384-mE6eXfrb8jxl0rzJDBRanYqgBxtJ6Unn4/1F7q4xRRyIw7Vdg9jP4ycT7x1iVsgb" crossorigin="anonymous"></script>
+
+<!-- News Carousel JavaScript -->
 <script src="js/newscarousel.js" type="text/javascript"></script>
+
+<!-- Contact Form JavaScript -->
+<script src="js/jqBootstrapValidation.js"></script>
+<script src="js/contact_me.js"></script>
+
+<!-- Theme JavaScript -->
 <script src="js/agency.js" type="text/javascript"></script>
 
 </body>
